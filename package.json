@@ -1,0 +1,15 @@
+{
+  "name": "n-queens",
+  "version": "1.0.0",
+  "description": "N Queen Solution comparison using various flavors of hill climbing and simulated annealing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paul Grigoruta",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "yargs": "^16.1.1"
+  }
+}
