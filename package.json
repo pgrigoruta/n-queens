@@ -10,6 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.0",
-    "yargs": "^16.1.1"
+    "underscore": "^1.11.0",
+    "yargs": "^16.1.1",
+    "yargs-default-command": "^1.0.2"
   }
 }

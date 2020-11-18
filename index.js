@@ -1,9 +1,13 @@
 const yargs = require('yargs');
+const args = require('yargs-default-command')(yargs);
 const chalk = require('chalk');
 
-yargs.version('1.0.0');
+const Problem = require('./nqueens');
 
-yargs
+const supportedAlgorithms = ['hillclimb-first-choice','hillclimb-steepest-ascent','hillclimb-random-restart', 'annealing']
+
+
+args
 .option('num-queens', {
     default: 8,
     type: 'int',
@@ -15,10 +19,23 @@ yargs
     description: 'Number of problems to try solving'
 })
 .option('algorithm', {
-    default: 8,
-    type: 'int',
-    description: 'Number of queens'
+    default: 'hillclimb-first-choice',
+    type: 'string',
+    description: 'Algorithm',
+    describe: 'Must be one of '+supportedAlgorithms.join(', ')
 })
-.argv;
+.args;
 
 const arguments = yargs.parse();
+
+if(!supportedAlgorithms.includes(arguments.algorithm)) {
+    console.log(chalk.red.inverse("The given algorithm ("+arguments.algorithm+") is not supported. Use one of "+supportedAlgorithms.join(', ')));
+}
+else {
+    let problem = new Problem(arguments.numQueens, arguments.numTries, arguments.algorithm);
+    problem.run();
+    console.log(problem.getStatsAsString());
+
+    //console.log(problem.getSolutionsAsString());
+}
+
